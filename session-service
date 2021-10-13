@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: session-service
+  labels:
+    app: session-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: session-service
+      labels:
+        app: session-service
+    spec:
+      containers:
+        - name: session-service
+          image: eggboy/session-service:0.0.1
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: session-service
